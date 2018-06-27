@@ -19,6 +19,10 @@ def start():
         sas.setUserData(1, 0, 0.0, math.sin(angle), 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0)
         sas.setUserData(2, 1, math.cos(angle), 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0)
         sas.setUserData(3, 1, 0.0, math.cos(angle), 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0)
+	sas.setUserMatrixA(0, 1.0 , 0.0 , 0.0, 0.0)
+	sas.setUserMatrixB(0, 0.0 , 1.0 , 0.0, 0.0)
+	sas.setUserMatrixC(0, 0.0 , 0.0 , 1.0, 0.0)
+	sas.setUserMatrixD(0, math.sin(angle) , 0.0 , 0.0, 0.0)
 
 
 if __name__ == '__main__':

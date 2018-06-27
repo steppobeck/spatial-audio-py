@@ -46,34 +46,121 @@ SpatialAudioSender::stop(){
 	m_running = false;
 }
 
+
+
+
 void
 SpatialAudioSender::setUserData(const unsigned user_id, const unsigned group_id,
-					 const float pos_x, const float pos_y, const float pos_z,
-					 const float front_x, const float front_y, const float front_z,
-				     const float up_x, const float up_y, const float up_z){
-	if(user_id >= m_userdata.size()){
-		std::cerr << "ERROR in:  skipping user_id: " << user_id << std::endl;
-		return;
-	}
+                                         const float pos_x, const float pos_y, const float pos_z,
+                                         const float front_x, const float front_y, const float front_z,
+                                         const float up_x, const float up_y, const float up_z){
 
-	boost::mutex::scoped_lock lock( *(m_mutex[user_id]) );
 
-	m_userdata[user_id].user_id = user_id;
-	m_userdata[user_id].group_id = group_id;
 
-	m_userdata[user_id].position[0] = pos_x;
-	m_userdata[user_id].position[1] = pos_y;
-	m_userdata[user_id].position[2] = pos_z;
+        if(user_id >= m_userdata.size()){
+                std::cerr << "ERROR in:  skipping user_id: " << user_id << std::endl;
+                return;
+        }
 
-	m_userdata[user_id].front[0] = front_x;
-	m_userdata[user_id].front[1] = front_y;
-	m_userdata[user_id].front[2] = front_z;
+        boost::mutex::scoped_lock lock( *(m_mutex[user_id]) );
 
-	m_userdata[user_id].up[0] = up_x;
-	m_userdata[user_id].up[1] = up_y;
-	m_userdata[user_id].up[2] = up_z;
+        m_userdata[user_id].user_id = user_id;
+        m_userdata[user_id].group_id = group_id;
+
+        m_userdata[user_id].position[0] = pos_x;
+        m_userdata[user_id].position[1] = pos_y;
+        m_userdata[user_id].position[2] = pos_z;
+
+        m_userdata[user_id].front[0] = front_x;
+        m_userdata[user_id].front[1] = front_y;
+        m_userdata[user_id].front[2] = front_z;
+
+        m_userdata[user_id].up[0] = up_x;
+        m_userdata[user_id].up[1] = up_y;
+        m_userdata[user_id].up[2] = up_z;
 
 }
+
+
+
+
+
+void
+SpatialAudioSender::setUserMatrixA(const unsigned user_id, const float m0, const float m1, const float m2, const float m3){
+
+
+
+        if(user_id >= m_userdata.size()){
+                std::cerr << "ERROR in:  skipping user_id: " << user_id << std::endl;
+                return;
+        }
+
+        boost::mutex::scoped_lock lock( *(m_mutex[user_id]) );
+
+        m_userdata[user_id].m_t[0] = m0;
+        m_userdata[user_id].m_t[1] = m1;
+        m_userdata[user_id].m_t[2] = m2;
+        m_userdata[user_id].m_t[3] = m3;
+
+}
+
+void
+SpatialAudioSender::setUserMatrixB(const unsigned user_id, const float m0, const float m1, const float m2, const float m3){
+
+
+
+        if(user_id >= m_userdata.size()){
+                std::cerr << "ERROR in:  skipping user_id: " << user_id << std::endl;
+                return;
+        }
+
+        boost::mutex::scoped_lock lock( *(m_mutex[user_id]) );
+
+        m_userdata[user_id].m_t[4] = m0;
+        m_userdata[user_id].m_t[5] = m1;
+        m_userdata[user_id].m_t[6] = m2;
+        m_userdata[user_id].m_t[7] = m3;
+
+}
+
+void
+SpatialAudioSender::setUserMatrixC(const unsigned user_id, const float m0, const float m1, const float m2, const float m3){
+
+
+
+        if(user_id >= m_userdata.size()){
+                std::cerr << "ERROR in:  skipping user_id: " << user_id << std::endl;
+                return;
+        }
+
+        boost::mutex::scoped_lock lock( *(m_mutex[user_id]) );
+
+        m_userdata[user_id].m_t[8] = m0;
+        m_userdata[user_id].m_t[9] = m1;
+        m_userdata[user_id].m_t[10] = m2;
+        m_userdata[user_id].m_t[11] = m3;
+
+}
+void
+SpatialAudioSender::setUserMatrixD(const unsigned user_id, const float m0, const float m1, const float m2, const float m3){
+
+
+
+        if(user_id >= m_userdata.size()){
+                std::cerr << "ERROR in:  skipping user_id: " << user_id << std::endl;
+                return;
+        }
+
+        boost::mutex::scoped_lock lock( *(m_mutex[user_id]) );
+
+        m_userdata[user_id].m_t[12] = m0;
+        m_userdata[user_id].m_t[13] = m1;
+        m_userdata[user_id].m_t[14] = m2;
+        m_userdata[user_id].m_t[15] = m3;
+
+}
+
+
 
 
 void

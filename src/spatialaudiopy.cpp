@@ -27,6 +27,10 @@ BOOST_PYTHON_MODULE(spatialaudiopy) {
         .def("start", &SpatialAudioSender::start)
         .def("stop", &SpatialAudioSender::stop)
         .def("setUserData", &SpatialAudioSender::setUserData)
+        .def("setUserMatrixA", &SpatialAudioSender::setUserMatrixA)
+        .def("setUserMatrixB", &SpatialAudioSender::setUserMatrixB)
+        .def("setUserMatrixC", &SpatialAudioSender::setUserMatrixC)
+        .def("setUserMatrixD", &SpatialAudioSender::setUserMatrixD)
         //.def("is_paused", &RemoteRecorder::is_paused)
         //.add_property("filename", &RemoteRecorder::get_filename, &RemoteRecorder::set_filename)
     ;  
